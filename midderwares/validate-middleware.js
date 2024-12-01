@@ -1,10 +1,12 @@
 const validate = (schema) => async (req, res, next) => {
   try {
-    const parseBody = await schema.parseAsync(req, body);
+    const parseBody = await schema.parseAsync(req.body);
     req.body = parseBody;
     next();
   } catch (error) {
-    res.status(400).json({ msg: error });
+    const message = error.errors.message;
+    console.log(message);
+    res.status(400).json({ msg: "Validation failed" });
   }
 };
 
