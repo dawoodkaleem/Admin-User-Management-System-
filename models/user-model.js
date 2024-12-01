@@ -70,6 +70,11 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
+// Compare JWT Token
+
+userSchema.methods.comparePassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 // ***Components of a JWt:
 
