@@ -3,9 +3,11 @@ const express = require("express");
 const app = express();
 const router = require("./router/auth-router");
 const connectDb = require("./utils/db");
+const errorMiddleware = require("./midderwares/error-middleware");
 // Mount the Router to use the router in your main Express app you can mount  it at   specific URL prefix
 app.use(express.json());
 app.use("/api/auth", router);
+app.use(errorMiddleware);
 // To parse JSON request bodies
 
 // app.get("/", (req, res) => {
