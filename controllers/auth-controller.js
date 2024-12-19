@@ -26,7 +26,7 @@ const register = async (req, res) => {
     const userExist = await User.findOne({ email });
 
     if (userExist) {
-      return res.status(400).json({ msg: "email alredy exits" });
+      return res.status(400).json({ message: "email alredy exits" });
     }
 
     // Hash the password hash
@@ -62,7 +62,7 @@ const login = async (req, res) => {
     const userExist = await User.findOne({ email });
     console.log(userExist, "Alde afafar");
     if (!userExist) {
-      return res.status(400).json({ msg: " Invalid Credentaials" });
+      return res.status(400).json({ message: " Invalid Credentaials" });
     }
     const user = await userExist.comparePassword(password);
     if (user) {

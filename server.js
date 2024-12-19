@@ -5,6 +5,7 @@ const app = express();
 const authRouter = require("./router/auth-router");
 const contactRouter = require("./router/contact-router");
 const serviceRoute = require("./router/service-router");
+const adminRoute = require("./router/admin-router");
 const connectDb = require("./utils/db");
 const errorMiddleware = require("./midderwares/error-middleware");
 // Mount the Router to use the router in your main Express app you can mount  it at   specific URL prefix
@@ -22,6 +23,10 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/form", contactRouter);
 app.use("/api/data", serviceRoute);
+
+// lets define Admin routes
+
+app.use("/api/admin", adminRoute);
 
 app.use(errorMiddleware);
 // To parse JSON request bodies
