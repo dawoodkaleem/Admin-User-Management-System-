@@ -4,6 +4,6 @@ const router = express.Router();
 const authMiddleware = require("../midderwares/auth-middleware");
 
 router.route("/users").get(authMiddleware, adminController.getAllUsers);
-router.route("/contacts").get(adminController.getAllContacts);
+router.route("/contacts").get(authMiddleware, adminController.getAllContacts);
 
 module.exports = router;
