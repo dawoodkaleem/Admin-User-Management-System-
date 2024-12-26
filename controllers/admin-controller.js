@@ -18,6 +18,17 @@ const getAllUsers = async (req, res, next) => {
   }
 };
 // ____________________________
+//   Users  Delete Logic
+// _______
+const deleteUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ____________________________
 //  Get All Users Contacts Data
 // ____________________________
 
@@ -34,4 +45,4 @@ const getAllContacts = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getAllContacts };
+module.exports = { getAllUsers, getAllContacts, deleteUserById };
