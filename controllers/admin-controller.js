@@ -29,6 +29,20 @@ const deleteUserById = async (req, res) => {
     next(error);
   }
 };
+
+// ____________________________
+//   Contacts  Delete Logic
+// _______
+const deleteContactById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Contact.deleteOne({ _id: id });
+    return res.status(200).json({ message: "Contacts Deleted Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // ____________________________
 //  Single  Users Logic
 // _______
@@ -82,4 +96,5 @@ module.exports = {
   deleteUserById,
   getUserById,
   updateUserById,
+  deleteContactById,
 };
